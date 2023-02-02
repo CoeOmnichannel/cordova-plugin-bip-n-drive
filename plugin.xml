@@ -7,14 +7,33 @@
     <clobbers target="cordova.plugins.GalpBipDriveImpl"/>
   </js-module>
 
+  <preference name="BDRIVE_APP_ID" default="appId" value="" />
+  <preference name="BDRIVE_APP_KEY" default="appKey" value="" />
+  <preference name="BDRIVE_CLIENT_ID" default="clientId" value="" />
 
   <platform name="android">
+
+    <config-file target="res/values/strings.xml" parent="/*">
+        <string name="appId">$BDRIVE_APP_ID</string>
+    </config-file>
+    <config-file target="res/values/strings.xml" parent="/*">
+        <string name="appKey">$BDRIVE_APP_KEY</string>
+    </config-file>
+    <config-file target="res/values/strings.xml" parent="/*">
+        <string name="clientId">$BDRIVE_CLIENT_ID</string>
+    </config-file>
 
     <source-file src="src/android/com/galp/plugins/bipdrive/GalpBipDriveImpl.java" target-dir="src/com/galp/plugins/bipdrive"/>
 
     <framework src="build-extras-bipdrive.gradle" custom="true" type="gradleReference" />
     <resource-file src="src/android/libs/BipDriveCore.aar" target="libs/BipDriveCore.aar" />
     <resource-file src="src/android/libs/BipDriveParkingMeter.aar" target="libs/BipDriveParkingMeter.aar" />
+
+    <config-file parent="/manifest" target="AndroidManifest.xml">
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    </config-file>
+        
   </platform>
 
   <platform name="ios">
@@ -27,7 +46,22 @@
       <preference name="deployment-target" value="13.0" />
       <preference name="SwiftVersion" value="5" />
     </config-file>
+
+    <config-file target="*-Info.plist" parent="BDriveAppId">
+        <string>$BDRIVE_APP_ID</string>
+    </config-file>
+    <config-file target="*-Info.plist" parent="BDriveAppKey">
+        <string>$BDRIVE_APP_KEY</string>
+    </config-file>
+    <config-file target="*-Info.plist" parent="BDriveAppClient">
+        <string>$BDRIVE_CLIENT_ID</string>
+    </config-file>
+
     <source-file src="src/ios/GalpBipDriveImpl.swift"/>
-    <lib-file src="libs/iOS/BipDriveCore.framework" />
+
+    <framework src="libs/iOS/Device/BipDriveCore.framework" custom="true" embed="true"/>
+    <framework src="libs/iOS/Device/BipDriveParkingmeters.framework" custom="true" embed="true"/>
+    <framework src="libs/iOS/Device/TPVVInLibrary.framework" custom="true" embed="true"/>
+
   </platform>
 </plugin>
