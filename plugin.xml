@@ -10,6 +10,9 @@
   <preference name="BDRIVE_APP_ID" default="appId" value="" />
   <preference name="BDRIVE_APP_KEY" default="appKey" value="" />
   <preference name="BDRIVE_CLIENT_ID" default="clientId" value="" />
+  <preference name="BDRIVE_APP_ID" default="appId" value="" />
+  <preference name="BDRIVE_APP_KEY" default="appKey" value="" />
+  <preference name="BDRIVE_CLIENT_ID" default="clientId" value="" />
 
   <platform name="android">
 
