@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="bipdrive">
+    <output-path>$PROJECT_DIR$/out/artifacts/bipdrive</output-path>
+    <root id="archive" name="bipdrive.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/libs/BipDriveCore.aar" />
+      <element id="file-copy" path="$PROJECT_DIR$/libs/BipDriveParkingMeter.aar" />
+    </root>
+  </artifact>
+</component>

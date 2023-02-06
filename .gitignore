@@ -2,6 +2,7 @@
 out/production/cordova-plugin-bip-n-drive/ios/GalpBipDriveImpl.swift
 out/production/cordova-plugin-bip-n-drive/android/libs/BipDriveParkingMeter.aar
 out/production/cordova-plugin-bip-n-drive/android/libs/BipDriveCore.aar
+out/
 node_modules/yauzl/README.md
 node_modules/yauzl/package.json
 node_modules/yauzl/LICENSE
