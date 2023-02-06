@@ -24,7 +24,7 @@
         <string name="clientId">$BDRIVE_CLIENT_ID</string>
     </config-file>
  
-    <source-file src="src/android/com/galp/plugins/bipdrive/GalpBipDriveImpl.java" target-dir="src/com/galp/plugins/bipdrive"/>
+    <source-file src="src/android/com/galp/plugins/bipdrive/GalpBipDriveImpl.java" target-dir="src/android/com/galp/plugins/bipdrive"/>
 
     <framework src="src/android/build-extras-bipdrive.gradle" custom="true" type="gradleReference" />
     <resource-file src="src/android/libs/BipDriveCore.aar" target="libs/BipDriveCore.aar" />
