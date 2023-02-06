@@ -65,7 +65,7 @@ public class GalpBipDriveImpl extends CordovaPlugin {
                 try {
 
                     System.out.println("launchParkingMeter");
-                    
+
                     System.out.println(appId);
                     System.out.println(appKey);
                     System.out.println(clientId);
@@ -73,7 +73,7 @@ public class GalpBipDriveImpl extends CordovaPlugin {
                      BipDriveConfig bipDriveConfig = new BipDriveConfig(
                     "LqMY01d1!sbZz^g5Hu5BJOM9Qi75Ws3*6AdmpBV&M9bfvW6BT&",
                     "6^7&AL3rCbWl",
-                    "f835071b-529a-4748-a883-cedd1f9c8411");
+                    "_f835071b-529a-4748-a883-cedd1f9c8411");
   
             BDParkingMeterLaunch.INSTANCE.launchParkingMeter(mCordova.getActivity(), "en", bipDriveConfig, R.drawable.alert_dark_frame, ContextCompat.getColor(mCordova.getActivity(), R.color.background_dark), new ConfigValidationResult() {
 
