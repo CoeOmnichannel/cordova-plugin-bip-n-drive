@@ -86,17 +86,19 @@ ail: Exception in call to dispatchEvent: Can't create handler inside thread Thre
 
                @Override
                public void onValidationOK(@NotNull ConfigValidationResponse configValidationResponse) {
-
+                System.out.println("onValidationOK");
+                System.out.println(configValidationResponse);
                }
 
                @Override
                public void onValidationLoaded() {
-
+                
                }
 
                @Override
                public void onValidationKO(@NotNull BDErrorResponse bdErrorResponse) {
-
+                System.out.println("onValidationKO");
+                System.out.println(bdErrorResponse);
                }
 
             }, new NeedsUpgradeResult() {
