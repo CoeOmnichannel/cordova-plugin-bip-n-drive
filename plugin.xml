@@ -4,7 +4,7 @@
   <description>Galp Cordova Plugin Bip Drive</description>
   <author>Galp Inc</author>
   <js-module name="GalpBipDriveImpl" src="www/GalpBipDriveImpl.js">
-    <clobbers target="cordova.plugins.GalpBipDriveImpl"/>
+    <clobbers target="GalpBipDriveImpl"/>
   </js-module>
 
   <preference name="BDRIVE_APP_ID" default="appId" value="" />
