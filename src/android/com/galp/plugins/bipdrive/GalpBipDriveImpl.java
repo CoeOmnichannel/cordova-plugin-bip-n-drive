@@ -43,13 +43,19 @@ public class GalpBipDriveImpl extends CordovaPlugin {
     static private CallbackContext _callbackContext;
 
     CordovaInterface mCordova;
-
+/**
+ail: Exception in call to dispatchEvent: Can't create handler inside thread Thread[pool-4-thread-6,5,main] that has not called Looper.prepare()
+ */
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         _callbackContext = callbackContext;
 
+        System.out.println("execute");
 
         if (LAUNCH_PARKING_METER.equals(action)) {
+
+            System.out.println("action: " + action);
+
             this.launchParkingMeter(args, callbackContext);
             return true;
         } 
@@ -59,7 +65,8 @@ public class GalpBipDriveImpl extends CordovaPlugin {
     }
 
       private void launchParkingMeter(final JSONArray args, final CallbackContext callbackContext) {
-        cordova.getThreadPool().execute(new Runnable() {
+
+        cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 try {
