@@ -1,17 +1,13 @@
-var GalpBipDriveImpl = (function () {
-    var GalpBipDriveImpl = (typeof exports !== 'undefined' && exports) || {};
-    var exec = cordova.require('cordova/exec'); // eslint-disable-line no-undef
-   
+
+
+  module.exports = {
+    launchParkingMeter: function(successCallback, errorCallback) {
+      cordova.exec(successCallback, errorCallback, 'GalpBipDriveImpl', 'launchParkingMeter', []);
+    },
+
+    openSDK: function(successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, 'GalpBipDriveImpl', 'openSDK', []);
+      },
+ 
+  };
   
-    GalpBipDriveImpl.launchParkingMeter = function (success, fail) {
-      return exec(success, fail, 'GalpBipDriveImpl', 'launchParkingMeter');
-    };
-  
-    GalpBipDriveImpl.openSDK = function (success, fail) {
-      return exec(success, fail, 'GalpBipDriveImpl', 'openSDK');
-    };
-   
-    return GalpBipDriveImpl;
-  })();
-  
-  module.exports = GalpBipDriveImpl;
