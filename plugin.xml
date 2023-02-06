@@ -36,6 +36,15 @@
     <resource-file src="src/android/libs/BipDriveCore.aar" target="libs/BipDriveCore.aar" />
     <resource-file src="src/android/libs/BipDriveParkingMeter.aar" target="libs/BipDriveParkingMeter.aar" />
 
+    <config-file target="AndroidManifest.xml" parent="application">
+      <meta-data android:name="com.bipdrive.bipdrivecore.ENVIRONMENT" android:value="PRE"/>
+    </config-file>
+
+    <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
+      <application tools:replace="android:theme" />
+    </edit-config>
+
+
     <config-file parent="/manifest" target="AndroidManifest.xml">
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
       <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
