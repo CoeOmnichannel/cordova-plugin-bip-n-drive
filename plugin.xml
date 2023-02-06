@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <plugin id="com.galp.plugins.bipdrive" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>GalpBipDrive</name>
-  <description>Galp Cordova Plugin Bip &amp; Drive</description>
+  <description>Galp Cordova Plugin Bip Drive</description>
   <author>Galp Inc</author>
   <js-module name="GalpBipDriveImpl" src="www/GalpBipDriveImpl.js">
     <clobbers target="cordova.plugins.GalpBipDriveImpl"/>
