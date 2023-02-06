@@ -1,13 +1,16 @@
+var exec = require('cordova/exec');
+const pluginName = "GalpBipDriveImpl"
 
-
-  module.exports = {
-    launchParkingMeter: function(successCallback, errorCallback) {
-      cordova.exec(successCallback, errorCallback, 'GalpBipDriveImpl', 'launchParkingMeter', []);
-    },
-
-    openSDK: function(successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, 'GalpBipDriveImpl', 'openSDK', []);
-      },
- 
-  };
+var exports = {
   
+    launchParkingMeter: (success, error) => {
+      exec(success, error, pluginName, 'launchParkingMeter')
+    },
+     
+    openSDK: (success, error) => {
+        exec(success, error, pluginName, 'openSDK')
+      },
+  
+  }
+  
+module.exports = exports
