@@ -76,8 +76,8 @@ ail: Exception in call to dispatchEvent: Can't create handler inside thread Thre
                     System.out.println(appId);
                     System.out.println(appKey);
                     System.out.println(clientId);
-                    
-                    BipDriveConfig bipDriveConfig = new BipDriveConfig(appId, appKey, clientId);
+
+                    BipDriveConfig bipDriveConfig = new BipDriveConfig(appKey, appId, clientId);
   
                     BDParkingMeterLaunch.INSTANCE.launchParkingMeter(mCordova.getActivity(), "en", bipDriveConfig, R.drawable.alert_dark_frame, ContextCompat.getColor(mCordova.getActivity(), R.color.background_dark), new ConfigValidationResult() {
 
