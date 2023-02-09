@@ -5,11 +5,7 @@ var exports = {
   
     launchParkingMeter: (success, error) => {
       exec(success, error, pluginName, 'launchParkingMeter')
-    },
-     
-    openSDK: (success, error) => {
-        exec(success, error, pluginName, 'openSDK')
-      },
+    }
   
   }
   
