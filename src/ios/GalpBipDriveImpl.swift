@@ -1,22 +1,64 @@
+
+import UIKit
 import BipDriveCore
+import BipDriveParkingmeters
 
-@objc(GalpBipDriveImpl) class GalpBipDriveImpl : CDVPlugin {
-  
-  @objc(openObject:)
-  func openObject(_ command: CDVInvokedUrlCommand) {
-      var pluginResult = CDVPluginResult(
-          status: CDVCommandStatus_OK
-      )
 
-      let filePath = Bundle.main.path(forResource: "Root", ofType: "plist")!
-      let plist = NSDictionary(contentsOfFile: filePath)
-      let BDriveAppId = plist?.object(forKey: "BDriveAppId")
-      let BDriveAppKey = plist?.object(forKey: "BDriveAppKey")
-      let BDriveAppClient = plist?.object(forKey: "BDriveAppClient")
+@objc(GalpBipDriveImpl) class GalpBipDriveImpl : CDVPlugin, BDResultsDelegate {
+    
+    var pluginResult = CDVPluginResult(
+        status: CDVCommandStatus_OK
+    )
+    
+    var callbackId: String!;
+    
+    func didGetError(response: BipDriveCore.BDErrorResponse) {
+        pluginResult = CDVPluginResult(
+            status: CDVCommandStatus_ERROR
+        )
+        self.commandDelegate!.send(
+          pluginResult,
+          callbackId: self.callbackId
+        )
+    }
 
+  @objc(openSDK:)
+  func openSDK(_ command: CDVInvokedUrlCommand) {
+
+      self.callbackId = command.callbackId;
+      
       if(command.methodName == "openSDK") {
-        let vc = BDParkingmetersAssembler.setUp(credentials: config, resultsDelegate: self, language: "es")
-        self.present(vc, animated: true, completion: nil)
+          
+          var pListInfo: [String: Any]?
+                  
+          if let infoPlistPath = Bundle.main.url(forResource: "Info", withExtension: "plist") {
+              do {
+                  let infoPlistData = try Data(contentsOf: infoPlistPath)
+                  
+                  if let dict = try PropertyListSerialization.propertyList(from: infoPlistData, options: [], format: nil) as? [String: Any] {
+                      pListInfo = dict
+                      
+                      let config = BDConfig()
+                      config.appID = pListInfo!["BDriveAppId"] as? String
+                      config.appKey = pListInfo!["BDriveAppKey"] as? String
+                      config.clientID = pListInfo!["BDriveAppClient"] as? String
+                      DispatchQueue.main.async {
+                          let vc = BDParkingmetersAssembler.setUp(credentials: config, resultsDelegate: self, language: "es")
+                          self.viewController.present(vc, animated: true)
+                      }
+                  }
+              } catch {
+                  print(error)
+                  pluginResult = CDVPluginResult(
+                      status: CDVCommandStatus_ERROR
+                  )
+                  self.commandDelegate!.send(
+                    pluginResult,
+                    callbackId: command.callbackId
+                  )
+              }
+          }
+
       } else {
           pluginResult = CDVPluginResult(
               status: CDVCommandStatus_ERROR
@@ -24,7 +66,6 @@ import BipDriveCore
           self.commandDelegate!.send(
             pluginResult,
             callbackId: command.callbackId
-            
           )
       }
   }
