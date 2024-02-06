@@ -14,6 +14,9 @@
 
   <platform name="android">
 
+    <hook type="after_prepare" src="scripts/addGradleProperties.js" />
+
+
     <config-file target="res/values/strings.xml" parent="/*">
         <string name="appId">$BDRIVE_APP_ID</string>
     </config-file>
